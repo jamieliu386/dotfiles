@@ -8,23 +8,25 @@ if type brew &>/dev/null; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
-if command -v pyenv >/dev/null 2>&1; then
+if type pyenv &>/dev/null; then
   eval "$(pyenv init -)"
 fi
 
-if command -v nvim >/dev/null 2>&1; then
+if type nvim &>/dev/null; then
   alias vim='nvim'
 fi
 
-export PATH="$HOME/.jenv/bin:$PATH"
-if command -v jenv >/dev/null 2>&1; then
+if [ -s "$HOME/.jenv" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+fi
+if type jenv &>/dev/null; then
   eval "$(jenv init -)"
 fi
 
-if command -v starship >/dev/null 2>&1; then
+if type starship &>/dev/null; then
   eval "$(starship init zsh)"
 fi
 
