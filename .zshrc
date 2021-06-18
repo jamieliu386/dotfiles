@@ -19,7 +19,7 @@ if type nvim &>/dev/null; then
   alias vim='nvim'
 fi
 
-if [ -s "$HOME/.jenv" ]; then
+if [ -d "$HOME/.jenv" ]; then
   export PATH="$HOME/.jenv/bin:$PATH"
 fi
 if type jenv &>/dev/null; then
