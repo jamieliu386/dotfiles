@@ -26,6 +26,10 @@ if type jenv &>/dev/null; then
   eval "$(jenv init -)"
 fi
 
+if type rbenv &>/dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 if type starship &>/dev/null; then
   eval "$(starship init zsh)"
 fi
