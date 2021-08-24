@@ -1,8 +1,10 @@
+set -o emacs
+
 if type brew &>/dev/null; then
   export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 
+  # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
   autoload -Uz compinit
   compinit
 fi
@@ -10,10 +12,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
-if type pyenv &>/dev/null; then
-  eval "$(pyenv init -)"
-fi
 
 if type nvim &>/dev/null; then
   alias vim='nvim'
@@ -24,6 +22,14 @@ if [ -d "$HOME/.jenv" ]; then
 fi
 if type jenv &>/dev/null; then
   eval "$(jenv init -)"
+fi
+
+if [ -d "$HOME/.pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+if type pyenv &>/dev/null; then
+  eval "$(pyenv init --path)"
 fi
 
 if type rbenv &>/dev/null; then
