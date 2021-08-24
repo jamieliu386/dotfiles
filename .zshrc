@@ -1,5 +1,8 @@
 set -o emacs
 
+# Fn+Delete on macOS
+bindkey "\e[3~" delete-char
+
 if type brew &>/dev/null; then
   export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 
